@@ -1,7 +1,7 @@
 package com.hanjx369.demo.cache;
 
 import com.alibaba.fastjson2.JSON;
-import com.hanjx369.demo.cache.base.AbstractCache;
+import com.hanjx369.demo.cache.context.AbstractCache;
 import com.hanjx369.demo.entity.Merchandise;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

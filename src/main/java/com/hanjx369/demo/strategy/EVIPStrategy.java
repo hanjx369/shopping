@@ -1,8 +1,10 @@
 package com.hanjx369.demo.strategy;
 
+import com.alibaba.fastjson2.JSON;
 import com.hanjx369.demo.entity.Merchandise;
 import com.hanjx369.demo.entity.User;
 import com.hanjx369.demo.enums.DiscountEnum;
+import com.hanjx369.demo.strategy.context.ShoppingStrategyAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +20,10 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class EVIPStrategy implements ShoppingStrategy {
+public class EVIPStrategy implements ShoppingStrategyAware {
     @Override
     public DiscountEnum getStrategy() {
+        log.info("load strategy: {}", JSON.toJSONString(DiscountEnum.EVIP));
         return DiscountEnum.EVIP;
     }
 

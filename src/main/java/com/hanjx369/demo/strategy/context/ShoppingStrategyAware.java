@@ -1,4 +1,4 @@
-package com.hanjx369.demo.strategy;
+package com.hanjx369.demo.strategy.context;
 
 import com.hanjx369.demo.entity.Merchandise;
 import com.hanjx369.demo.entity.User;
@@ -10,7 +10,7 @@ import java.util.Map;
  * @author 寒江雪
  * @createDate 2024-05-29 23:56
  */
-public interface ShoppingStrategy {
+public interface ShoppingStrategyAware {
 
     /**
      * 根据code获取折扣

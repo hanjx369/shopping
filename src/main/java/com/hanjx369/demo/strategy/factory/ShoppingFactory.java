@@ -1,7 +1,7 @@
 package com.hanjx369.demo.strategy.factory;
 
 import com.hanjx369.demo.enums.DiscountEnum;
-import com.hanjx369.demo.strategy.ShoppingStrategy;
+import com.hanjx369.demo.strategy.context.ShoppingStrategyAware;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
@@ -20,9 +20,9 @@ import java.util.Map;
 public class ShoppingFactory implements InitializingBean {
 
     @Resource
-    private List<ShoppingStrategy> shoppingStrategies;
+    private List<ShoppingStrategyAware> shoppingStrategies;
 
-    private final Map<DiscountEnum, ShoppingStrategy> shoppingMap = new HashMap<>();
+    private final Map<DiscountEnum, ShoppingStrategyAware> shoppingMap = new HashMap<>();
 
     /**
      * 根据code获取折扣策略
@@ -30,7 +30,7 @@ public class ShoppingFactory implements InitializingBean {
      * @param code code
      * @return DiscountEnum
      */
-    public ShoppingStrategy getStrategy(int code) {
+    public ShoppingStrategyAware getStrategy(int code) {
         DiscountEnum discountEnum = DiscountEnum.valueOf(code);
         return shoppingMap.get(discountEnum);
     }

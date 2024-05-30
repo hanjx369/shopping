@@ -1,6 +1,4 @@
-package com.hanjx369.demo.cache.base;
-
-import com.hanjx369.demo.cache.context.CacheInitializationAware;
+package com.hanjx369.demo.cache.context;
 
 /**
  * 缓存热启动抽象类

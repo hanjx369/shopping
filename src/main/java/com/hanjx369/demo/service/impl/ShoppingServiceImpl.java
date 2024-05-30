@@ -6,7 +6,7 @@ import com.hanjx369.demo.cache.UserCache;
 import com.hanjx369.demo.entity.Merchandise;
 import com.hanjx369.demo.entity.User;
 import com.hanjx369.demo.service.ShoppingService;
-import com.hanjx369.demo.strategy.ShoppingStrategy;
+import com.hanjx369.demo.strategy.context.ShoppingStrategyAware;
 import com.hanjx369.demo.strategy.factory.ShoppingFactory;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +44,7 @@ public class ShoppingServiceImpl implements ShoppingService {
         Merchandise merchandise = merchandiseCache.get(merchandiseId);
         log.info("current user: {}", JSON.toJSONString(user));
         log.info("current merchandise: {}", JSON.toJSONString(merchandise));
-        ShoppingStrategy strategy = shoppingFactory.getStrategy(user.getType());
+        ShoppingStrategyAware strategy = shoppingFactory.getStrategy(user.getType());
         return strategy.buy(user, merchandise);
     }
 }

@@ -1,9 +1,9 @@
 package com.hanjx369.demo.cache.handler;
 
 import com.hanjx369.demo.cache.context.CacheInitializationAware;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,16 +16,14 @@ import java.util.List;
  */
 @Slf4j
 @Component
-public class CacheInitializer implements CommandLineRunner {
+public class CacheInitializer {
 
     @Resource
     private List<CacheInitializationAware> cacheInitializationAwareList;
 
-    @Override
-    public void run(String... args) throws Exception {
-        for (CacheInitializationAware cacheInitializationAware : cacheInitializationAwareList) {
-            cacheInitializationAware.init();
-        }
+    @PostConstruct
+    public void run() {
+        cacheInitializationAwareList.forEach(CacheInitializationAware::init);
     }
 
 }
