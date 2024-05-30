@@ -27,7 +27,7 @@ public class NormalStrategy implements ShoppingStrategy {
 
     @Override
     public Map<String, Object> buy(User user, Merchandise merchandise) {
-        log.info("当前策略: {}", getStrategy().getType());
+        log.info("current strategy: {}", getStrategy().getType());
         DecimalFormat df = new DecimalFormat("0.00");
         Map<String, Object> result = new HashMap<>();
         result.put("用户姓名", user.getName());

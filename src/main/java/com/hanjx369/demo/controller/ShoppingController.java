@@ -33,7 +33,7 @@ public class ShoppingController {
      */
     @GetMapping("/buy")
     public Result<Map<String, Object>> buy(Long userId, Long merchandiseId) {
-        log.info("用户ID: {}, 商品ID: {}", userId, merchandiseId);
+        log.info("user id: {}, merchandise id: {}", userId, merchandiseId);
         if (userId == null || merchandiseId == null) {
             return Result.fail("参数错误");
         }

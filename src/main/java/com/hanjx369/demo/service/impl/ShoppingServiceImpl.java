@@ -1,5 +1,6 @@
 package com.hanjx369.demo.service.impl;
 
+import com.alibaba.fastjson2.JSON;
 import com.hanjx369.demo.cache.MerchandiseCache;
 import com.hanjx369.demo.cache.UserCache;
 import com.hanjx369.demo.entity.Merchandise;
@@ -41,6 +42,8 @@ public class ShoppingServiceImpl implements ShoppingService {
     public Map<String, Object> buy(Long userId, Long merchandiseId) {
         User user = userCache.get(userId);
         Merchandise merchandise = merchandiseCache.get(merchandiseId);
+        log.info("current user: {}", JSON.toJSONString(user));
+        log.info("current merchandise: {}", JSON.toJSONString(merchandise));
         ShoppingStrategy strategy = shoppingFactory.getStrategy(user.getType());
         return strategy.buy(user, merchandise);
     }
