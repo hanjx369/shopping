@@ -11,18 +11,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 普通用户策略
+ * 超级vip策略
  *
  * @author 寒江雪
- * @createDate 2024-05-30 00:13
+ * @createDate 2024-05-30 12:32
  */
 @Slf4j
 @Component
-public class NormalStrategy implements ShoppingStrategy {
-
+public class SVIPStrategy implements ShoppingStrategy {
     @Override
     public DiscountEnum getStrategy() {
-        return DiscountEnum.NORMAL;
+        return DiscountEnum.SVIP;
     }
 
     @Override
