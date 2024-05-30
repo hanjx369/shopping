@@ -1,14 +1,12 @@
 package com.hanjx369.demo.cache.handler;
 
 import com.hanjx369.demo.cache.context.CacheInitializationAware;
-import com.hanjx369.demo.utils.ApplicationContextUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * 热启动
@@ -21,15 +19,12 @@ import java.util.Map;
 public class CacheInitializer implements CommandLineRunner {
 
     @Resource
-    private ApplicationContextUtil applicationContextUtil;
+    private List<CacheInitializationAware> cacheInitializationAwareList;
 
     @Override
     public void run(String... args) throws Exception {
-        ApplicationContext context = applicationContextUtil.getContext();
-        Map<String, CacheInitializationAware> beans = context.getBeansOfType(CacheInitializationAware.class);
-        for (Map.Entry<String, CacheInitializationAware> cacheInitializationAwareEntry : beans.entrySet()) {
-            CacheInitializationAware bean = context.getBean(cacheInitializationAwareEntry.getValue().getClass());
-            bean.init();
+        for (CacheInitializationAware cacheInitializationAware : cacheInitializationAwareList) {
+            cacheInitializationAware.init();
         }
     }
 
