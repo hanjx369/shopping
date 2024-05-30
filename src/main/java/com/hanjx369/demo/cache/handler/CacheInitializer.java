@@ -21,8 +21,11 @@ public class CacheInitializer {
     @Resource
     private List<CacheInitializationAware> cacheInitializationAwareList;
 
+    /**
+     * 加载缓存
+     */
     @PostConstruct
-    public void run() {
+    public void load() {
         cacheInitializationAwareList.forEach(CacheInitializationAware::init);
     }
 

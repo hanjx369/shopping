@@ -2,9 +2,9 @@ package com.hanjx369.demo.strategy.factory;
 
 import com.hanjx369.demo.enums.DiscountEnum;
 import com.hanjx369.demo.strategy.context.ShoppingStrategyAware;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class ShoppingFactory implements InitializingBean {
+public class ShoppingFactory {
 
     @Resource
     private List<ShoppingStrategyAware> shoppingStrategies;
@@ -35,8 +35,11 @@ public class ShoppingFactory implements InitializingBean {
         return shoppingMap.get(discountEnum);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    /**
+     * 注册策略枚举
+     */
+    @PostConstruct
+    public void register() {
         shoppingStrategies.forEach(shoppingStrategy -> {
             DiscountEnum discount = shoppingStrategy.getStrategy();
             shoppingMap.put(discount, shoppingStrategy);
