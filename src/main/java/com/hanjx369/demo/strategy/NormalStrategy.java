@@ -34,10 +34,8 @@ public class NormalStrategy implements ShoppingStrategyAware {
         DecimalFormat df = new DecimalFormat("0.00");
         Map<String, Object> result = new HashMap<>();
         result.put("用户姓名", user.getName());
-        result.put("用户等级", getStrategy().getType());
         result.put("商品名称", merchandise.getName());
         result.put("商品原价", df.format(merchandise.getPrice()));
-        result.put("应享折扣", df.format(getStrategy().getDiscount()));
         result.put("折后价格", df.format(merchandise.getPrice().multiply(getStrategy().getDiscount())));
         return result;
     }

@@ -33,6 +33,7 @@ public class PVIPStrategy implements ShoppingStrategyAware {
         DecimalFormat df = new DecimalFormat("0.00");
         Map<String, Object> result = new HashMap<>();
         result.put("用户姓名", user.getName());
+        result.put("用户年龄", user.getAge());
         result.put("用户等级", getStrategy().getType());
         result.put("商品名称", merchandise.getName());
         result.put("商品原价", df.format(merchandise.getPrice()));
