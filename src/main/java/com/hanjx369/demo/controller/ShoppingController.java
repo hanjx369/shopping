@@ -21,8 +21,14 @@ import java.util.Map;
 @RequestMapping("/shopping")
 public class ShoppingController {
 
-    @Resource
-    private ShoppingService shoppingService;
+    @Resource(name = "shoppingService1")
+    private ShoppingService shoppingService1;
+
+    @Resource(name = "shoppingService2")
+    private ShoppingService shoppingService2;
+
+    @Resource(name = "shoppingService3")
+    private ShoppingService shoppingService3;
 
     /**
      * 购买商品
@@ -37,6 +43,6 @@ public class ShoppingController {
         if (userId == null || merchandiseId == null) {
             return Result.fail("参数错误");
         }
-        return Result.success(shoppingService.buy(userId, merchandiseId), "购买成功");
+        return Result.success(shoppingService3.buy(userId, merchandiseId), "购买成功");
     }
 }

@@ -15,12 +15,14 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 /**
+ * 工厂 + 策略模式实现
+ *
  * @author 寒江雪
  * @createDate 2024-05-29 23:26
  */
 @Slf4j
-@Service
-public class ShoppingServiceImpl implements ShoppingService {
+@Service("shoppingService3")
+public class ShoppingService3Impl implements ShoppingService {
 
     @Resource
     private ShoppingFactory shoppingFactory;
