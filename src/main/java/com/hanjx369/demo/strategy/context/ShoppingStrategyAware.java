@@ -13,7 +13,7 @@ import java.util.Map;
 public interface ShoppingStrategyAware {
 
     /**
-     * 根据code获取折扣
+     * 返回应享折扣枚举
      *
      * @return 折扣
      */
